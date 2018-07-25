@@ -22,8 +22,8 @@ import com.loopj.android.http.RequestParams;
  * 
  */
 public class TwitterClient extends OAuthBaseClient {
-	public static final BaseApi REST_API_INSTANCE = TwitterApi.instance(FlickrApi.FlickrPerm.WRITE); // Change this
-	public static final String REST_URL = "https://api.twitter.com/1.1/statuses/home_timeline.json"; // Change this, base API URL
+	public static final BaseApi REST_API_INSTANCE = TwitterApi.instance(); // Change this
+	public static final String REST_URL = "https://api.twitter.com/1.1"; // Change this, base API URL
 	public static final String REST_CONSUMER_KEY = "YOnAw0VgJ8oaTBgqbi9NGQzjp";       // Change this
 	public static final String REST_CONSUMER_SECRET = "0dUH68IinuEMmHkYngwfOSvexsYu9OixYVQ6DjKBwrGO0SmVyh"; // Change this
 
@@ -43,11 +43,12 @@ public class TwitterClient extends OAuthBaseClient {
 	}
 	// change this
 	// DEFINE METHODS for different API endpoints here
-	public void getInterestingnessList(AsyncHttpResponseHandler handler) {
-		String apiUrl = getApiUrl("?nojsoncallback=1&method=flickr.interestingness.getList");
+	public void getHomeTimeLine(AsyncHttpResponseHandler handler) {
+		String apiUrl = getApiUrl("statuses/home_timeline.json");
 		// Can specify query string params directly or through RequestParams.
 		RequestParams params = new RequestParams();
-		params.put("format", "json");
+		params.put("count", "25");
+		params.put("since_id", 1);
 		client.get(apiUrl, params, handler);
 	}
 

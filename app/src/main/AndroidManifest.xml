@@ -42,12 +42,12 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:scheme="http"
-                    android:host="www.twitter.com" />
+                    android:host="www.twitter.com"
+                    android:scheme="http" />
             </intent-filter>
         </activity>
-        <activity android:name=".TimelineActivity"></activity>
-
+        <activity android:name=".TimelineActivity" />
+        <activity android:name=".ProfileActivity"></activity>
     </application>
 
 </manifest>
